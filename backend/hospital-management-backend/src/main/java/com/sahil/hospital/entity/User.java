@@ -31,7 +31,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username", nullable = false, unique = true, length = 100)
+    @Column(name = "username", unique = true, length = 100)
     private String username;
 
     @Column(name = "email", nullable = false, unique = true, length = 255)
@@ -50,8 +50,8 @@ public class User {
     @Column(name = "last_name", nullable = false, length = 100)
     private String lastName;
 
-    @Column(name = "phone_number", length = 20)
-    private String phoneNumber;
+    @Column(name = "phone", length = 20)
+    private String phone;
 
     @Column(name = "enabled", nullable = false)
     @Builder.Default
@@ -63,8 +63,26 @@ public class User {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
+    public String getPhoneNumber() {
+        return this.phone;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phone = phoneNumber;
+    }
+
+    public static class UserBuilder {
+        public UserBuilder phoneNumber(String phoneNumber) {
+            this.phone = phoneNumber;
+            return this;
+        }
+    }
+
     @PrePersist
     protected void onCreate() {
+        if (this.username == null || this.username.isBlank()) {
+            this.username = this.email;
+        }
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
