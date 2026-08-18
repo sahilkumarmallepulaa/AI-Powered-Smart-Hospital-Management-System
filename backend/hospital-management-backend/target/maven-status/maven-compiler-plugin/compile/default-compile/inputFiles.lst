@@ -1,8 +1,12 @@
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\config\OpenApiConfig.java
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\config\SecurityConfig.java
+C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\controller\AuthController.java
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\controller\HealthController.java
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\dto\ApiResponse.java
+C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\dto\AuthResponse.java
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\dto\HealthStatusResponse.java
+C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\dto\LoginRequest.java
+C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\dto\RegisterRequest.java
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\entity\package-info.java
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\entity\Role.java
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\entity\User.java
@@ -13,6 +17,11 @@ C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Mana
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\HospitalManagementApplication.java
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\repository\package-info.java
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\repository\UserRepository.java
+C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\security\CustomUserDetailsService.java
+C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\security\JwtAuthenticationEntryPoint.java
+C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\security\JwtAuthenticationFilter.java
+C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\security\JwtService.java
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\security\package-info.java
+C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\service\AuthService.java
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\service\package-info.java
 C:\Users\sahil\OneDrive\Documents\resume building\AI-Powered-Smart-Hospital-Management-System\backend\hospital-management-backend\src\main\java\com\sahil\hospital\util\package-info.java
