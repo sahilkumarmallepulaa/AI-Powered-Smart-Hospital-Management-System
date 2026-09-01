@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthService authService;
+    private final com.sahil.hospital.service.UserService userService;
 
     @PostMapping("/login")
     @Operation(
@@ -50,5 +51,28 @@ public class AuthController {
     public ResponseEntity<ApiResponse<AuthResponse>> login(@Valid @RequestBody LoginRequest request) {
         AuthResponse response = authService.login(request);
         return ResponseEntity.ok(ApiResponse.success("Authentication successful", response));
+    }
+
+    @PostMapping("/register")
+    @Operation(
+        summary = "User Registration",
+        description = "Registers a new user account with default PATIENT role. Password is encrypted before storage."
+    )
+    @ApiResponses(value = {
+        @io.swagger.v3.oas.annotations.responses.ApiResponse(
+            responseCode = "201",
+            description = "User registered successfully",
+            content = @Content(schema = @Schema(implementation = ApiResponse.class))
+        ),
+        @io.swagger.v3.oas.annotations.responses.ApiResponse(
+            responseCode = "400",
+            description = "Validation failure - Invalid input data format",
+            content = @Content(schema = @Schema(implementation = ApiResponse.class))
+        )
+    })
+    public ResponseEntity<ApiResponse<com.sahil.hospital.dto.UserResponse>> register(@Valid @RequestBody com.sahil.hospital.dto.RegisterRequest request) {
+        com.sahil.hospital.dto.UserResponse response = userService.registerUser(request);
+        return ResponseEntity.status(org.springframework.http.HttpStatus.CREATED)
+            .body(ApiResponse.success("User registered successfully", response));
     }
 }

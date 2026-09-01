@@ -50,6 +50,9 @@ class AuthControllerTest {
     private AuthService authService;
 
     @MockBean
+    private com.sahil.hospital.service.UserService userService;
+
+    @MockBean
     private UserRepository userRepository;
 
     @Test

@@ -162,4 +162,42 @@ class UserServiceTest {
         assertNotEquals("rawPassword123", capturedUser.getPassword());
         verify(passwordEncoder, times(1)).encode("rawPassword123");
     }
+
+    @Test
+    @DisplayName("6. Should return authenticated user profile from SecurityContext")
+    void testGetCurrentUserProfileSuccess() {
+        org.springframework.security.core.Authentication authentication =
+            mock(org.springframework.security.core.Authentication.class);
+        when(authentication.isAuthenticated()).thenReturn(true);
+        when(authentication.getName()).thenReturn("jane.doe@example.com");
+        when(authentication.getPrincipal()).thenReturn("jane.doe@example.com");
+
+        org.springframework.security.core.context.SecurityContextHolder.getContext().setAuthentication(authentication);
+        when(userRepository.findByEmail("jane.doe@example.com")).thenReturn(Optional.of(savedUser));
+
+        UserResponse response = userService.getCurrentUserProfile();
+
+        assertNotNull(response);
+        assertEquals(10L, response.getId());
+        assertEquals("jane.doe@example.com", response.getEmail());
+        assertEquals(Role.PATIENT, response.getRole());
+        org.springframework.security.core.context.SecurityContextHolder.clearContext();
+    }
+
+    @Test
+    @DisplayName("7. Should throw ResourceNotFoundException when authenticated user does not exist in DB")
+    void testGetCurrentUserProfileNotFoundInDb() {
+        org.springframework.security.core.Authentication authentication =
+            mock(org.springframework.security.core.Authentication.class);
+        when(authentication.isAuthenticated()).thenReturn(true);
+        when(authentication.getName()).thenReturn("nonexistent@example.com");
+        when(authentication.getPrincipal()).thenReturn("nonexistent@example.com");
+
+        org.springframework.security.core.context.SecurityContextHolder.getContext().setAuthentication(authentication);
+        when(userRepository.findByEmail("nonexistent@example.com")).thenReturn(Optional.empty());
+        when(userRepository.findByUsername("nonexistent@example.com")).thenReturn(Optional.empty());
+
+        assertThrows(ResourceNotFoundException.class, () -> userService.getCurrentUserProfile());
+        org.springframework.security.core.context.SecurityContextHolder.clearContext();
+    }
 }

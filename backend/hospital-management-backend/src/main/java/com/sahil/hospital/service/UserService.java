@@ -62,6 +62,23 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
+    public UserResponse getCurrentUserProfile() {
+        org.springframework.security.core.Authentication authentication =
+            org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication == null || !authentication.isAuthenticated() || "anonymousUser".equals(authentication.getPrincipal())) {
+            throw new com.sahil.hospital.exception.UnauthorizedException("User is not authenticated");
+        }
+
+        String identifier = authentication.getName();
+        User user = userRepository.findByEmail(identifier)
+            .orElseGet(() -> userRepository.findByUsername(identifier)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with identifier: " + identifier)));
+
+        return mapToUserResponse(user);
+    }
+
+    @Transactional(readOnly = true)
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
