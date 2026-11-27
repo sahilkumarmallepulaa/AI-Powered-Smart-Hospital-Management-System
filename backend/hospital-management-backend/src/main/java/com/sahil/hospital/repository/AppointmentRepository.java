@@ -37,4 +37,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
         @Param("endTime") LocalTime endTime,
         @Param("excludeId") Long excludeId
     );
+
+    @Query("SELECT COUNT(a) > 0 FROM Appointment a WHERE a.doctor.id = :doctorId AND a.patient.id = :patientId AND a.status IN (com.sahil.hospital.entity.AppointmentStatus.CONFIRMED, com.sahil.hospital.entity.AppointmentStatus.COMPLETED)")
+    boolean hasActiveCareRelationship(@Param("doctorId") Long doctorId, @Param("patientId") Long patientId);
 }
